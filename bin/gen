@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+const fs = require('fs')
+const path = require('path')
+
+const command = process.argv[2]
+const value = process.argv[3]
+
+const YAMLFrontMatter = `---
+title: 
+date: 
+---`
+
+if (command === 'create') {
+  const filename = path.join(__dirname, `../articles/${value}.md`)
+  fs.writeFileSync(filename, YAMLFrontMatter)
+} else if (command === 'build') {
+  require('../scripts/generate')
+}
