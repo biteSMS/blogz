@@ -5,7 +5,12 @@ const matter = require('gray-matter')
 const articlesDir = path.join(__dirname, '../articles')
 const articles = fs
   .readdirSync(articlesDir)
-  .filter(filename => filename.indexOf('.') !== 0 && filename.split('.').splice(-1)[0] === 'md' && filename !== 'README.md')
+  .filter(
+    filename =>
+      filename.indexOf('.') !== 0 &&
+      filename.split('.').splice(-1)[0] === 'md' &&
+      filename !== 'README.md'
+  )
 const parseArticles = articles.map(article =>
   matter(fs.readFileSync(path.join(articlesDir, article)))
 )
