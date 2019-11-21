@@ -1,0 +1,19 @@
+.background {
+  width: 100%;
+  position: relative;
+
+  img {
+    /* 让图片等比例缩放 */
+    object-fit: cover;
+    height: 450px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .background img {
+    height: 250px;
+  }
+}

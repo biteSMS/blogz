@@ -1,0 +1,59 @@
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import classNames from 'classnames'
+import Portal from '@/components/Portal'
+import useAdapt from '@/components/Header/useAdapt'
+import navList from './mock'
+import menuIcon from '@/assets/images/menu.png'
+import menuAdaptIcon from '@/assets/images/menu-adapt.png'
+import './index.less'
+
+const Header: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false)
+  const isAdapt = useAdapt()
+  return (
+    <header style={{ background: isAdapt ? '#fff' : 'none' }}>
+      <div className="header-inner flex jc-sb ai-center">
+        <Link to="/" style={{ height: 'auto' }}>
+          <div className={classNames('brand', { 'brand-adapt': isAdapt })}>Wentz's Blog</div>
+        </Link>
+        <nav className="flex ai-center jc-sb">
+          {navList.map((el, index) => (
+            <Link to={el.url} key={index}>
+              <div className={classNames('link flex ai-center', { 'link-adapt': isAdapt })}>
+                <div
+                  className={classNames('link-in flex jc-center ai-center', {
+                    'link-in-adapt': isAdapt
+                  })}>
+                  {el.name}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </nav>
+        <div className="menu" onClick={() => setShowMenu(true)}>
+          <img src={isAdapt ? menuAdaptIcon : menuIcon} draggable={false} />
+        </div>
+        <Portal>
+          <div className={classNames('menu-list', { 'menu-list-active': showMenu })}>
+            <div className="container flex column">
+              {navList.map((el, index) => (
+                <Link to={el.url} key={index} onClick={() => setShowMenu(false)}>
+                  <div className="mobile-link">{el.name}</div>
+                </Link>
+              ))}
+            </div>
+            <div className="close" onClick={() => setShowMenu(false)}>
+              <img src={require('@/assets/images/close.png')} draggable={false} />
+            </div>
+          </div>
+          <div
+            className={classNames('mask', { 'mask-active': showMenu })}
+            onClick={() => setShowMenu(false)}></div>
+        </Portal>
+      </div>
+    </header>
+  )
+}
+
+export default Header
