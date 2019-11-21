@@ -20,8 +20,3 @@ fs.writeFileSync(
   path.join(__dirname, '../public/__blogz__.js'),
   `window.__BLOGZ__ = ${JSON.stringify(parseArticles)}`
 )
-
-// fs.writeFileSync(
-//   path.join(__dirname, '../src/assets/_gen/__blogz__.json'),
-//   JSON.stringify(parseArticles)
-// )
