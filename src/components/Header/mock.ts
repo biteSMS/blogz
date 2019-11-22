@@ -12,7 +12,7 @@ export default [
     url: '/article/1'
   },
   {
-    name: '百度',
-    url: 'http//:baidu.com'
+    name: 'Google',
+    url: 'https://www.google.com'
   }
 ]

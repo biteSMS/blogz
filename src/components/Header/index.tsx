@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import LinkDuo from './LinkDuo'
 import classNames from 'classnames'
 import Portal from '@/components/Portal'
 import useAdapt from '@/components/Header/useAdapt'
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
         </Link>
         <nav className="flex ai-center jc-sb">
           {navList.map((el, index) => (
-            <Link to={el.url} key={index}>
+            <LinkDuo to={el.url} key={index}>
               <div className={classNames('link flex ai-center', { 'link-adapt': isAdapt })}>
                 <div
                   className={classNames('link-in flex jc-center ai-center', {
@@ -31,7 +32,7 @@ const Header: React.FC = () => {
                   {el.name}
                 </div>
               </div>
-            </Link>
+            </LinkDuo>
           ))}
         </nav>
         <div className="menu" onClick={() => setShowMenu(true)}>
@@ -41,7 +42,7 @@ const Header: React.FC = () => {
           <div className={classNames('menu-list', { 'menu-list-active': showMenu })}>
             <div className="container flex column">
               {navList.map((el, index) => (
-                <Link to={el.url} key={index} onClick={() => setShowMenu(false)}>
+                <LinkDuo to={el.url} key={index} onClick={() => setShowMenu(false)}>
                   <div className="mobile-link flex ai-center">
                     <span
                       className={classNames('mobile-link-line', {
@@ -49,7 +50,7 @@ const Header: React.FC = () => {
                       })}></span>
                     {el.name}
                   </div>
-                </Link>
+                </LinkDuo>
               ))}
             </div>
             <div className="close" onClick={() => setShowMenu(false)}>
