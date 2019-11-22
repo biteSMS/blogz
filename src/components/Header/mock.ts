@@ -10,5 +10,9 @@ export default [
   {
     name: '留言板',
     url: '/article/1'
+  },
+  {
+    name: '百度',
+    url: 'http//:baidu.com'
   }
 ]

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 import Portal from '@/components/Portal'
 import useAdapt from '@/components/Header/useAdapt'
@@ -9,6 +9,7 @@ import menuAdaptIcon from '@/assets/images/menu-adapt.png'
 import './index.less'
 
 const Header: React.FC = () => {
+  const { pathname } = useLocation()
   const [showMenu, setShowMenu] = useState(false)
   const isAdapt = useAdapt()
   return (
@@ -23,7 +24,9 @@ const Header: React.FC = () => {
               <div className={classNames('link flex ai-center', { 'link-adapt': isAdapt })}>
                 <div
                   className={classNames('link-in flex jc-center ai-center', {
-                    'link-in-adapt': isAdapt
+                    'link-in-adapt': isAdapt,
+                    'link-in-active': pathname === el.url,
+                    'link-in-adapt-active': pathname === el.url && isAdapt
                   })}>
                   {el.name}
                 </div>
@@ -39,7 +42,13 @@ const Header: React.FC = () => {
             <div className="container flex column">
               {navList.map((el, index) => (
                 <Link to={el.url} key={index} onClick={() => setShowMenu(false)}>
-                  <div className="mobile-link">{el.name}</div>
+                  <div className="mobile-link flex ai-center">
+                    <span
+                      className={classNames('mobile-link-line', {
+                        'mobile-link-line-active': pathname === el.url
+                      })}></span>
+                    {el.name}
+                  </div>
                 </Link>
               ))}
             </div>
