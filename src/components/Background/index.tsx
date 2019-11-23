@@ -3,12 +3,17 @@ import './index.less'
 
 interface IProps {
   image: string
+  title: string
+  subTitle: string
 }
 
 const Background: React.FC<IProps> = props => (
   <div className="background">
     <img src={props.image} draggable={false} />
-    {props.children}
+    <div className="container">
+      <div className="title">{props.title}</div>
+      <div className="sub-title">{props.subTitle}</div>
+    </div>
   </div>
 )
 
