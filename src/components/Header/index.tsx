@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false)
   const isAdapt = useAdapt()
   return (
-    <header className={classNames({'header-adapt': isAdapt})}>
+    <header className={classNames({ 'header-adapt': isAdapt })}>
       <div className="header-inner flex jc-sb ai-center">
         <Link to="/" style={{ height: 'auto' }}>
           <div className={classNames('brand', { 'brand-adapt': isAdapt })}>Wentz's Blog</div>
