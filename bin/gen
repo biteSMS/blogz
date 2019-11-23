@@ -14,6 +14,10 @@ date: !!str ${moment().format('YYYY-MM-DD')}
 ---`
 
 if (command === 'create') {
+  const articlePath = path.join(__dirname, '../articles')
+  if (!fs.existsSync(articlePath)) {
+    fs.mkdirSync(articlePath)
+  }
   const filename = path.join(__dirname, `../articles/${value}.md`)
   fs.writeFileSync(filename, YAMLFrontMatter)
 } else if (command === 'build') {
