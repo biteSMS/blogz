@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 
 const Portal: React.FC = props => {
-  const elRef = useRef(null)
+  const elRef = useRef() as React.MutableRefObject<HTMLDivElement>
   if (!elRef.current) {
     elRef.current = document.createElement('div')
   }

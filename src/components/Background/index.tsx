@@ -2,7 +2,7 @@ import * as React from 'react'
 import './index.less'
 
 interface IProps {
-  image: any
+  image: string
 }
 
 const Background: React.FC<IProps> = props => (
