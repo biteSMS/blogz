@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
+const moment = require('moment')
 
 const command = process.argv[2]
 const value = process.argv[3]
 
 const YAMLFrontMatter = `---
 title: 
-date: 
+description: 
+tags: []
+date: !!str ${moment().format('YYYY-MM-DD')}
 ---`
 
 if (command === 'create') {
