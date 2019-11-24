@@ -23,7 +23,7 @@ function useAdapt(): boolean {
       e.preventDefault()
       isAdapt() ? setRes(true) : setRes(false)
     })
-  })
+  }, [])
   return res
 }
 
