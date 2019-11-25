@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import LinkDuo from './LinkDuo'
+import { useLocation } from 'react-router-dom'
+import LinkDuo from '@/components/LinkDuo'
 import classNames from 'classnames'
 import Portal from '@/components/Portal'
 import useAdapt from '@/components/Header/useAdapt'
@@ -16,9 +16,9 @@ const Header: React.FC = () => {
   return (
     <header className={classNames({ 'header-adapt': isAdapt })}>
       <div className="header-inner flex jc-sb ai-center">
-        <Link to="/" style={{ height: 'auto' }}>
+        <LinkDuo to="/" style={{ height: 'auto' }}>
           <div className={classNames('brand', { 'brand-adapt': isAdapt })}>Wentz's Blog</div>
-        </Link>
+        </LinkDuo>
         <nav className="flex ai-center jc-sb">
           {navList.map((el, index) => (
             <LinkDuo to={el.url} key={index}>
