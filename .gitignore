@@ -25,6 +25,7 @@ yarn-error.log*
 # articles
 /articles/*.md
 !/articles/README.md
+/public/_articles
 
 # __blogz__
 /public/__blogz__.js
