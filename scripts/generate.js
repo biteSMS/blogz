@@ -35,7 +35,6 @@ parseArticles.map((s, i) =>
     __BLOGZ__.tags.hasOwnProperty(r) ? __BLOGZ__.tags[r].push(i) : (__BLOGZ__.tags[r] = [i])
   )
 )
-console.log(__BLOGZ__.tags)
 
 // 所有博客摘要
 __BLOGZ__.blogs = parseArticles.map(s => ({ ...s.data, en_title: s.en_title, url: s.url }))
