@@ -4,7 +4,8 @@ const matter = require('gray-matter')
 const moment = require('moment')
 
 const __BLOGZ__ = {
-  blogs: []
+  blogs: [],
+  tags: {}
 }
 const articlesDir = path.join(__dirname, '../articles')
 const _articlesDir = path.join(__dirname, '../public/_articles')
@@ -25,8 +26,16 @@ const parseArticles = articleFileNames.map(filename => ({
   url: `/_articles/${filename}`
 }))
 
-// 按时间倒叙排序
+// 按时间倒叙排序 blogs
 parseArticles.sort((a, b) => (moment(a.data.date).isBefore(b.data.date) ? 1 : -1))
+
+// 归纳 tags
+parseArticles.map((s, i) =>
+  s.data.tags.map(r =>
+    __BLOGZ__.tags.hasOwnProperty(r) ? __BLOGZ__.tags[r].push(i) : (__BLOGZ__.tags[r] = [i])
+  )
+)
+console.log(__BLOGZ__.tags)
 
 // 所有博客摘要
 __BLOGZ__.blogs = parseArticles.map(s => ({ ...s.data, en_title: s.en_title, url: s.url }))
