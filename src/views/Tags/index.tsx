@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Background from '@/components/Background'
+import Banner from '@/components/Banner'
 
 const Tags: React.FC = () => {
   return (
     <>
-      <Background
+      <Banner
         title="标签"
         subTitle="TAGS"
         image={require('@/assets/images/index-background.jpg')}

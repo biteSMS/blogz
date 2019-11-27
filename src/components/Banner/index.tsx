@@ -3,11 +3,11 @@ import './index.less'
 
 interface IProps {
   image: string
-  title: string
-  subTitle: string
+  title?: string
+  subTitle?: string
 }
 
-const Background: React.FC<IProps> = props => (
+const Banner: React.FC<IProps> = props => (
   <div className="background">
     <img src={props.image} draggable={false} />
     <div className="container">
@@ -17,4 +17,4 @@ const Background: React.FC<IProps> = props => (
   </div>
 )
 
-export default Background
+export default Banner
