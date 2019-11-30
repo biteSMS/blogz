@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Banner from '@/components/Banner'
+import './index.less'
 
 const Tags: React.FC = () => {
   return (
