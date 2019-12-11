@@ -12,17 +12,18 @@ function isAdapt(): boolean {
 
 function useAdapt(): boolean {
   const [res, setRes] = useState(isAdapt)
+  function adaptListener(e: Event) {
+    e.stopPropagation()
+    e.preventDefault()
+    isAdapt() ? setRes(true) : setRes(false)
+  }
   useEffect(() => {
-    window.addEventListener('resize', (e: UIEvent): void => {
-      e.stopPropagation()
-      e.preventDefault()
-      isAdapt() ? setRes(true) : setRes(false)
-    })
-    window.addEventListener('scroll', (e: Event): void => {
-      e.stopPropagation()
-      e.preventDefault()
-      isAdapt() ? setRes(true) : setRes(false)
-    })
+    window.addEventListener('resize', adaptListener)
+    window.addEventListener('scroll', adaptListener)
+    return () => {
+      window.removeEventListener('resize', adaptListener)
+      window.removeEventListener('scroll', adaptListener)
+    }
   }, [])
   return res
 }
