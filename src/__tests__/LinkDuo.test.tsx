@@ -27,6 +27,6 @@ describe('<LinkDuo />', () => {
         <Children />
       </LinkDuo>
     )
-    expect(wrapper.find('div').text()).toBe('children')
+    expect(wrapper.contains(<Children />)).toBe(true)
   })
 })
