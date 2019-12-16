@@ -27,6 +27,6 @@ describe('<LinkDuo />', () => {
         <Children />
       </LinkDuo>
     )
-    expect(wrapper.contains(<Children />)).toBe(true)
+    expect(wrapper.contains(<Children />)).toBeTruthy()
   })
 })
