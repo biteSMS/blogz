@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { mount, ReactWrapper } from 'enzyme'
 import Portal from '@/components/Portal'
 
