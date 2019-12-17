@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { mount } from 'enzyme'
 import Portal from '@/components/Portal'
 
@@ -21,16 +21,10 @@ describe('<Portal />', () => {
     wrapper.unmount()
     expect(document.body.childNodes.length).toEqual(0)
   })
-  // TODO: elRef.current Branch
-  // it('elRef.current Branch', () => {
-  //   const HookWrapper: React.FC<{ hook: any }> = props => {
-  //     props.hook ? props.hook() : undefined
-  //     return <Portal data-hook={props.hook} />
-  //   }
-  //   const useHook = () => {
-  //     const [val, setVal] = useState(0)
-  //     setVal(1)
-  //   }
-  //   const wrapper = mount(<HookWrapper hook={() => useHook()} />)
-  // })
+  it('elRef.current Branch', () => {
+    const el = document.createElement('div')
+    const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({current: el})
+    const wrapper = mount(<Portal>portal</Portal>)
+    expect(useRefSpy).toBeCalledTimes(1)
+  })
 })
