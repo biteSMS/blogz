@@ -1,15 +1,19 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, ReactWrapper } from 'enzyme'
 import { BrowserRouter as Router } from 'react-router-dom'
 import LinkDuo from '@/components/LinkDuo'
 
 describe('<LinkDuo />', () => {
+  let wrapper: ReactWrapper
+  afterEach(() => {
+    if (wrapper.exists()) wrapper.unmount()
+  })
   it('url', () => {
-    const wrapper = mount(<LinkDuo to="https://google.com" />)
+    wrapper = mount(<LinkDuo to="https://google.com" />)
     expect(wrapper.find('a').prop('href')).toBe('https://google.com')
   })
   it('link', () => {
-    const wrapper = mount(
+    wrapper = mount(
       <Router>
         <LinkDuo to="/foo/bar" />
       </Router>
@@ -17,12 +21,12 @@ describe('<LinkDuo />', () => {
     expect(wrapper.find('a').prop('href')).toBe('/foo/bar')
   })
   it('URL Schemes', () => {
-    const wrapper = mount(<LinkDuo to="weixin://scanqrcode" />)
+    wrapper = mount(<LinkDuo to="weixin://scanqrcode" />)
     expect(wrapper.find('a').prop('href')).toBe('weixin://scanqrcode')
   })
   it('props children', () => {
     const Children = () => <div>children</div>
-    const wrapper = mount(
+    wrapper = mount(
       <LinkDuo to="https://google.com">
         <Children />
       </LinkDuo>
