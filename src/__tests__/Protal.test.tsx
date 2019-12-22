@@ -26,7 +26,7 @@ describe('<Portal />', () => {
   })
   it('elRef.current Branch', () => {
     const el = document.createElement('div')
-    const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({current: el})
+    const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: el })
     wrapper = mount(<Portal>portal</Portal>)
     expect(useRefSpy).toBeCalledTimes(1)
     expect(document.body.childNodes.length).toEqual(1)
