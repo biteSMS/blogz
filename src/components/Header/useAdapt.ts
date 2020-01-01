@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // adapt desktop & mobile header
+// TODO: refactor
 
 function isAdapt(): boolean {
   if (window.innerWidth > 768 && window.pageYOffset >= 395) {
