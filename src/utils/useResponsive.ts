@@ -12,7 +12,7 @@ const subscribers = new Set<Subscriber>()
 function init() {
   function listener(e: Event) {
     const oldInfo = info
-    calculate()
+    calculate() 
     if (oldInfo === info) return
     for (const subscriber of subscribers) {
       subscriber()
