@@ -1,28 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Blogz
 
-## Available Scripts
+> ⼀个静态博客前端⻚⾯。⽀持通过 Markdown 语法写博客，可读取并解析博客⽬录下的⽂章，⽣成博客⻚⾯。 
 
-In the project directory, you can run:
+## 创建生成博客
 
-### `yarn start`
+```shell
+# 第一次使用执行此命令
+npm link
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# 创建一篇博客
+# 博客创建后会在 articles 目录下生成一个 markdown 文件
+# 具体说明可以查看 articles/README.md
+blogz create 'articles title'
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# 创建/修改博客后发布
+blogz build
+```
 
-### `yarn test`
+## 构建项目
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```shell
+# 安装依赖
+yarn install
 
-### `yarn build`
+# 启动热更新服务器
+yarn start
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 运行所有测试
+yarn test
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 构建线上代码
+yarn build
+```
